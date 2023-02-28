@@ -1,23 +1,27 @@
 package Entities;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Registry {
 	private String placa;
-	private LocalDateTime hora_entrada;
-	private LocalDateTime hora_saida;
+	private Date hora_entrada;
+	private Date hora_saida;
 	private double valorTotal;
 	
 	
 	public Registry() {
 
 	}
-
 	
-	public Registry(String placa, LocalDateTime hora_entrada) {
+	
+	
+	
+	public Registry(String placa, Date hora_entrada) {
 		this.placa = placa;
 		this.hora_entrada = hora_entrada;
 	}
+
+
 
 
 	public String getPlaca() {
@@ -25,29 +29,41 @@ public class Registry {
 	}
 
 
+
+
 	public void setPlaca(String placa) {
 		this.placa = placa;
 	}
 
 
-	public LocalDateTime getHora_entrada() {
+
+
+	public Date getHora_entrada() {
 		return hora_entrada;
 	}
 
 
-	public void setHora_entrada(LocalDateTime hora_entrada) {
+
+
+	public void setHora_entrada(Date hora_entrada) {
 		this.hora_entrada = hora_entrada;
 	}
 
 
-	public LocalDateTime getHora_saida() {
+
+
+	public Date getHora_saida() {
 		return hora_saida;
 	}
 
 
-	public void setHora_saida(LocalDateTime hora_saida) {
+
+
+	public void setHora_saida(Date hora_saida) {
 		this.hora_saida = hora_saida;
 	}
+
+
 
 
 	public double getValorTotal() {
@@ -55,22 +71,30 @@ public class Registry {
 	}
 
 
+
+
 	public void setValorTotal(double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
-	
-	public void valorTotal() {
-		
+
+
+
+
+	public void calcularValor() {
+		 long hora_saida = this.hora_saida.getTime();
+		 long hora_entrada = this.hora_entrada.getTime();
+		 long dif = (hora_saida - hora_entrada) / 1000;
+		 this.valorTotal =  (dif /60) * 0.10;
+		 
 	}
-	
 
 	@Override
 	public String toString() {
-		return "Registry [placa=" + placa + ", hora_entrada=" + hora_entrada + ", hora_saida=" + hora_saida
-				+ ", valorTotal=" + valorTotal + "]";
+		
+		return " Placa: "
+				+placa
+				+" Horario: "
+				+hora_entrada
+				;
 	}
-	
-	
-
-	
 }

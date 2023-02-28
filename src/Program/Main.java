@@ -2,6 +2,7 @@ package Program;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -26,7 +27,7 @@ public class Main {
 			sc.nextLine();
 			String placa = sc.nextLine();
 			System.out.println();
-			Registry registry = new Registry(placa, LocalDateTime.now());
+			Registry registry = new Registry(placa, new Date());
 			lista.add(registry);
 			
 			break;
@@ -34,6 +35,27 @@ public class Main {
 		case 2:
 			System.out.print("Informe a placa do veiculo para retirada: ");
 			sc.nextLine();
+			String buscaPlaca = sc.nextLine();
+			Registry reg = null;
+			
+			for(Registry registro : lista) {
+				if(registro.getPlaca().equals(buscaPlaca)) {
+					reg = registro;
+				}
+			}
+			
+			if(reg == null) {
+				System.err.println("Registro nao encontrado!!!");
+	
+			}else {
+				
+					reg.setHora_saida(new Date());
+					reg.calcularValor();
+				
+					System.out.println("Valor total: " +reg.getValorTotal());
+					lista.remove(reg);
+				//dadadad
+			}
 			
 			break;
 			
@@ -48,7 +70,6 @@ public class Main {
 			
 			break;
 			}
-		
 		}
 	}
 	
