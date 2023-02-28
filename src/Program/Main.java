@@ -1,9 +1,7 @@
 package Program;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 
 import Entities.Registry;
@@ -38,6 +36,8 @@ public class Main {
 			String buscaPlaca = sc.nextLine();
 			Registry reg = null;
 			
+			
+			
 			for(Registry registro : lista) {
 				if(registro.getPlaca().equals(buscaPlaca)) {
 					reg = registro;
@@ -51,18 +51,30 @@ public class Main {
 				
 					reg.setHora_saida(new Date());
 					reg.calcularValor();
-				
-					System.out.println("Valor total: " +reg.getValorTotal());
-					lista.remove(reg);
-				//dadadad
+					
+					System.out.println(reg.toString());
+					
+					//System.out.println("Confirma retirada? (y/n)");
+					
+					/* 
+					 * String resp = sc.nextLine();
+					 * 
+					 * if (resp == "y") { lista.remove(reg); System.out.println("removed!"); }
+					 */
+					
+					//lista.remove(reg);
+			
 			}
+			
 			
 			break;
 			
 		case 3:
+			
 			for(Registry registro : lista) {
 				System.out.println(registro);
 			}
+			
 			break;	
 
 		default:
